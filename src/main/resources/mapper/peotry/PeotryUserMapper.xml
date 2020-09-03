@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.king.project.peotry.mapper.PeotryUserMapper">
+
+    <resultMap type="org.king.project.peotry.domain.PeotryUser" id="UserResult">
+        <id     property="userId"       column="user_id"      />
+        <result property="loginName"    column="login_name"   />
+        <result property="userName"     column="user_name"    />
+        <result property="sex"          column="sex"          />
+        <result property="avatar"       column="avatar"       />
+        <result property="password"     column="password"     />
+        <result property="salt"         column="salt"         />
+        <result property="createTime"   column="create_time"  />
+        <result property="signature"    column="signature"    />
+    </resultMap>
+
+    <sql id="selectUserVo">
+       select  sys_peotry_user.user_id, sys_peotry_user.login_name, sys_peotry_user.user_name, sys_peotry_user.sex,
+               sys_peotry_user.avatar, sys_peotry_user.password, sys_peotry_user.salt,sys_peotry_user.create_time, sys_peotry_user.signature
+		from sys_peotry_user
+    </sql>
+
+    <select id="selectUserByLoginName" parameterType="String" resultMap="UserResult">
+        <include refid="selectUserVo"/>
+        where sys_peotry_user.login_name = #{userName}
+    </select>
+
+</mapper>
