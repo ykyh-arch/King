@@ -197,6 +197,11 @@ public class ShiroAuoConfiguration implements WebMvcConfigurer {
         filterChainDefinitionMap.put("/king/**", "anon");
         //添加古诗词接口匿名访问
         filterChainDefinitionMap.put("/peotry/**", "anon");
+        filterChainDefinitionMap.put("/swagger-ui.html/**", "anon");
+        filterChainDefinitionMap.put("/webjars/**", "anon");
+        filterChainDefinitionMap.put("/swagger-resources/**","anon");
+        filterChainDefinitionMap.put("/v2/**","anon");
+
         // 退出 logout地址，shiro去清除session
         filterChainDefinitionMap.put("/logout", "logout");
         // 不需要拦截的访问

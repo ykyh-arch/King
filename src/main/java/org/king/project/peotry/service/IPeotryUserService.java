@@ -25,4 +25,5 @@ public interface IPeotryUserService extends BaseService<PeotryUser> {
      * @return 结果
      */
     PeotryUser selectUserByLoginName(String username);
+
 }

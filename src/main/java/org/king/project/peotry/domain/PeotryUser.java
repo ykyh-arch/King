@@ -1,5 +1,6 @@
 package org.king.project.peotry.domain;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
@@ -26,19 +27,20 @@ public class PeotryUser implements Serializable {
 	/**
 	 * 用户ID
 	 */
-	@ApiModelProperty(value = "用户ID",hidden = true)
+	@ApiModelProperty(value = "用户ID")
+	@TableId
 	private Long userId;
 	/**
 	 * 登录账号
 	 */
-	@ApiModelProperty(value="账号",required=true)
+	@ApiModelProperty(value="账号")
 	@NotBlank(message = "登录账号不能为空")
 	@Size(max = 30, message = "账号长度不能超过30个字符")
 	private String loginName;
 	/**
 	 * 用户昵称
 	 */
-	@ApiModelProperty(value="昵称",required=true)
+	@ApiModelProperty(value="昵称")
 	@Size(max = 30, message = "用户昵称长度不能超过30个字符")
 	private String userName;
 	/**
@@ -54,7 +56,7 @@ public class PeotryUser implements Serializable {
 	/**
 	 * 密码
 	 */
-	@ApiModelProperty(value="密码",required=true)
+	@ApiModelProperty(value="密码")
 	@Size(min = 6, message = "密码长度不能低于6个字符")
 	private String password;
 	/**

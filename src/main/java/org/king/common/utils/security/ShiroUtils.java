@@ -15,7 +15,7 @@ import org.king.project.system.user.domain.User;
 /**
  * shiro 工具类
  *
- * @author Crown
+ * @author King
  */
 public class ShiroUtils {
 

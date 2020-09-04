@@ -67,6 +67,16 @@ public abstract class Kings {
      *
      * @return
      */
+    public static String getUploadAvatarPath(String filename) {
+        KingProperties property = getProperties();
+        return property.getPath().getResourcePath() + property.getPath().getPrefix().getAvatar() + filename;
+    }
+
+    /**
+     * 获取头像上传路径
+     *
+     * @return
+     */
     public static String getUploadUrl(HttpServletRequest request, String filename) {
         return RequestUtils.getDomain(request) + getUploadResourcePath(filename);
     }

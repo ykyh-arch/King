@@ -109,7 +109,7 @@ public interface BaseService<T> {
 
     /**
      * <p>
-     * 根据 ID 选择修改
+     * 根据 ID 全部修改
      * </p>
      *
      * @param entity 实体对象
@@ -118,7 +118,7 @@ public interface BaseService<T> {
 
     /**
      * <p>
-     * 根据 ID 全部修改
+     * 根据 ID 选择修改
      * </p>
      *
      * @param entity 实体对象
