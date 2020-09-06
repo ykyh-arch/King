@@ -47,7 +47,7 @@ public class PeotryCollectionController extends WebController<PeotryCollection> 
 	@ResponseBody
 	public TableData<PeotryCollection> list(PeotryCollection collection) {
 		startPage();
-		List<PeotryCollection> list = collectionService.list(Wrappers.<PeotryCollection>lambdaQuery(collection));
+		List<PeotryCollection> list = collectionService.selectPeotryCollectionList(collection);
 		return getTableData(list);
 	}
 

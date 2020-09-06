@@ -4,4 +4,43 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.king.project.peotry.mapper.PeotryCollectionMapper">
 
+    <resultMap type="org.king.project.peotry.domain.PeotryCollection" id="PeotryCollectionResult">
+        <id     property="peotryId"     column="peotry_id"     />
+        <result property="peotryNme"   column="peotry_name"   />
+        <result property="authorId"  column="author_id"   />
+        <result property="dynasty"   column="dynasty"   />
+        <result property="originalContent"   column="original_content"   />
+        <result property="translationContent"     column="translation_content"      />
+        <result property="rank"      column="rank"       />
+        <result property="pronunciation"      column="pronunciation"       />
+        <result property="createTime"     column="create_time"      />
+        <association property="sysPeotryAuthor"    column="author_id" javaType="org.king.project.peotry.domain.SysPeotryAuthor" resultMap="authorResult" />
+    </resultMap>
+
+    <resultMap id="authorResult" type="org.king.project.peotry.domain.SysPeotryAuthor">
+        <id     property="authorId"   column="author_id"     />
+        <result property="authorName" column="author_name"   />
+        <result property="introduction" column="introduction"   />
+        <result property="peotryIds" column="peotry_ids"   />
+        <result property="createTime"   column="create_time"   />
+    </resultMap>
+
+    <sql id="selectPeotryCollectionVo">
+        select sys_peotry_collection.peotry_id, sys_peotry_collection.peotry_name, sys_peotry_collection.author_id, sys_peotry_collection.dynasty, sys_peotry_collection.original_content, sys_peotry_collection.translation_content, sys_peotry_collection.rank, sys_peotry_collection.pronunciation, sys_peotry_collection.create_time,
+        sys_peotry_author.author_name,sys_peotry_author.introduction
+        from sys_peotry_collection inner join sys_peotry_author on sys_peotry_collection.author_id = sys_peotry_author.author_id
+    </sql>
+
+    <select id="selectPeotryCollectionList" parameterType="org.king.project.peotry.domain.PeotryCollection" resultMap="PeotryCollectionResult">
+        <include refid="selectPeotryCollectionVo"/>
+        where 1=1
+        <if test="dynasty != null and dynasty != ''">
+            AND sys_peotry_collection.dynasty = #{dynasty}
+        </if>
+        <if test="authorId != null and authorId != ''">
+            AND sys_peotry_collection.author_id = #{authorId}
+        </if>
+        order by sys_peotry_collection.peotry_id, sys_peotry_collection.create_time
+    </select>
+
 </mapper>

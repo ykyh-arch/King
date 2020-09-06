@@ -6,6 +6,8 @@ import org.king.project.peotry.domain.PeotryCollection;
 import org.king.project.peotry.mapper.PeotryCollectionMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * 古诗词-诗集 服务层实现
  *
@@ -14,4 +16,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class PeotryCollectionServiceImpl extends BaseServiceImpl<PeotryCollectionMapper, PeotryCollection> implements IPeotryCollectionService {
 
+    @Override
+    public List<PeotryCollection> selectPeotryCollectionList(PeotryCollection collection) {
+        return baseMapper.selectPeotryCollectionList(collection);
+    }
 }
