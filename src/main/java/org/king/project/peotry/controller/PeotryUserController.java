@@ -60,7 +60,7 @@ public class PeotryUserController extends WebController<PeotryUser> {
 //	public void populateMovieCache() {
 //		String obj = (String)SecurityUtils.getSubject().getPrincipal();
 //		if(Objects.isNull(obj)){
-//			throw new KingException(HttpServletResponse.SC_BAD_REQUEST, "用户名未登录");
+//			throw new KingException(HttpServletResponse.SC_UNAUTHORIZED, "用户名未登录");
 //		}
 //	}
 
@@ -90,7 +90,7 @@ public class PeotryUserController extends WebController<PeotryUser> {
 	public void editSave(@Validated PeotryUser user) {
 		String obj = (String)SecurityUtils.getSubject().getPrincipal();
 		if(Objects.isNull(obj)){
-			throw new KingException(HttpServletResponse.SC_BAD_REQUEST, "用户名未登录");
+			throw new KingException(HttpServletResponse.SC_UNAUTHORIZED, "用户名未登录");
 		}
 		if(user.getUserId()==null){
 			throw new KingException(HttpServletResponse.SC_BAD_REQUEST, "用户主键ID必传");
@@ -111,7 +111,7 @@ public class PeotryUserController extends WebController<PeotryUser> {
 	public PeotryUser getUser(@PathVariable Integer userId) {
 		String obj = (String)SecurityUtils.getSubject().getPrincipal();
 		if(Objects.isNull(obj)){
-			throw new KingException(HttpServletResponse.SC_BAD_REQUEST, "用户名未登录");
+			throw new KingException(HttpServletResponse.SC_UNAUTHORIZED, "用户名未登录");
 		}
 		if(userId==null){
 			throw new KingException(HttpServletResponse.SC_BAD_REQUEST, "用户主键ID必传");
@@ -129,7 +129,7 @@ public class PeotryUserController extends WebController<PeotryUser> {
 	public String updateAvatar(@RequestParam("avatarfile") MultipartFile file) {
 		String obj = (String)SecurityUtils.getSubject().getPrincipal();
 		if(Objects.isNull(obj)){
-			throw new KingException(HttpServletResponse.SC_BAD_REQUEST, "用户名未登录");
+			throw new KingException(HttpServletResponse.SC_UNAUTHORIZED, "用户名未登录");
 		}
 		PeotryUser currentUser = peotryUserService.selectUserByLoginName(obj);
 		ApiAssert.isFalse(ErrorCodeEnum.USER_AVATAR_NOT_EMPTY, file.isEmpty());
