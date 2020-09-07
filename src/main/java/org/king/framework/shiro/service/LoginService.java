@@ -21,7 +21,7 @@ import org.springframework.util.StringUtils;
 /**
  * 登录校验方法
  *
- * @author Crown
+ * @author King
  */
 @Component
 public class LoginService {

@@ -28,7 +28,7 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 /**
  * 部门信息
  *
- * @author Crown
+ * @author King
  */
 @Controller
 @RequestMapping("/system/dept")

@@ -3,7 +3,7 @@ package org.king.common.enums;
 /**
  * 用户状态
  *
- * @author Crown
+ * @author King
  */
 public enum UserStatus {
     OK("0", "正常"), DISABLE("1", "停用");

@@ -9,7 +9,7 @@ import org.king.project.system.user.domain.UserPost;
 /**
  * 用户与岗位 表 数据层
  *
- * @author Crown
+ * @author King
  */
 @Mapper
 public interface UserPostMapper extends BaseMapper<UserPost> {

@@ -13,7 +13,7 @@ import org.king.project.system.user.domain.User;
 /**
  * 菜单 业务层
  *
- * @author Crown
+ * @author King
  */
 public interface IMenuService extends BaseService<Menu> {
 

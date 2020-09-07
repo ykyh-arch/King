@@ -7,7 +7,7 @@ import org.king.project.system.notice.domain.Notice;
 /**
  * 公告 数据层
  *
- * @author Crown
+ * @author King
  */
 @Mapper
 public interface NoticeMapper extends BaseMapper<Notice> {

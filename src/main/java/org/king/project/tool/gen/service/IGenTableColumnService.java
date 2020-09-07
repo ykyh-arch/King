@@ -8,7 +8,7 @@ import org.king.project.tool.gen.domain.GenTableColumn;
 /**
  * 业务字段 服务层
  *
- * @author Crown
+ * @author King
  */
 public interface IGenTableColumnService extends BaseService<GenTableColumn> {
 

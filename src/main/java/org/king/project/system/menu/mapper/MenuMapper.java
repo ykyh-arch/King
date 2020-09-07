@@ -9,7 +9,7 @@ import org.king.project.system.menu.domain.Menu;
 /**
  * 菜单表 数据层
  *
- * @author Crown
+ * @author King
  */
 @Mapper
 public interface MenuMapper extends BaseMapper<Menu> {

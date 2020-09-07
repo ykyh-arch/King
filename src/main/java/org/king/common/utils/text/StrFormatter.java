@@ -6,7 +6,7 @@ import org.king.common.utils.converter.Convert;
 /**
  * 字符串格式化
  *
- * @author Crown
+ * @author King
  */
 public class StrFormatter {
 

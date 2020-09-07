@@ -9,7 +9,7 @@ import org.king.project.system.dict.domain.DictType;
 /**
  * 字典 业务层
  *
- * @author Crown
+ * @author King
  */
 public interface IDictTypeService extends BaseService<DictType> {
 

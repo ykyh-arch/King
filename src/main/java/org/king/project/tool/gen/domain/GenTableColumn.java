@@ -14,7 +14,7 @@ import lombok.Setter;
 /**
  * 代码生成业务字段表 gen_table_column
  *
- * @author Crown
+ * @author King
  */
 @Setter
 @Getter

@@ -3,7 +3,7 @@ package org.king.common.cons;
 /**
  * 用户常量信息
  *
- * @author Crown
+ * @author King
  */
 public class UserConstants {
 

@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 import org.king.common.annotation.IgnoreSwaggerParameter;
+import org.king.common.utils.StringUtils;
 
 import javax.validation.constraints.NotBlank;
 import java.util.Date;
@@ -71,5 +72,19 @@ public class PeotryCollection {
 	private PeotryAuthor sysPeotryAuthor;
 	private Integer dynasty;
 
+	public void setOriginalContent(String originalContent) {
+		if(StringUtils.isNotEmpty(originalContent)){
+			this.originalContent = StringUtils.removeHTMLTag(originalContent);
+		}else{
+			this.originalContent = originalContent;
+		}
+	}
 
+	public void setTranslationContent(String translationContent) {
+		if(StringUtils.isNotEmpty(translationContent)){
+			this.translationContent = StringUtils.removeHTMLTag(translationContent);
+		}else{
+			this.translationContent = translationContent;
+		}
+	}
 }

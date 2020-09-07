@@ -10,7 +10,7 @@ import org.king.project.system.dept.domain.Dept;
 /**
  * 部门管理 数据层
  *
- * @author Crown
+ * @author King
  */
 @Mapper
 public interface DeptMapper extends BaseMapper<Dept> {

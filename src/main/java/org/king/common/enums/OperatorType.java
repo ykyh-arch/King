@@ -3,7 +3,7 @@ package org.king.common.enums;
 /**
  * 操作人类别
  *
- * @author Crown
+ * @author King
  */
 public enum OperatorType {
     /**

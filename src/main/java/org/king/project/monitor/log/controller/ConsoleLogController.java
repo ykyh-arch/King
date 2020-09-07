@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 /**
  * 日志监控
  *
- * @author Crown
+ * @author King
  */
 @Controller
 @RequestMapping("/monitor/consolelog")

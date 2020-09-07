@@ -19,7 +19,7 @@ import lombok.Setter;
 /**
  * 业务表 gen_table
  *
- * @author Crown
+ * @author King
  */
 @Setter
 @Getter

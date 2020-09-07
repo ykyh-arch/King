@@ -6,7 +6,7 @@ import org.king.project.system.user.domain.UserRole;
 /**
  * 用户 业务层
  *
- * @author Crown
+ * @author King
  */
 public interface IUserRoleService extends BaseService<UserRole> {
 

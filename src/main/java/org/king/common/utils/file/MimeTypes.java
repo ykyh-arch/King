@@ -3,7 +3,7 @@ package org.king.common.utils.file;
 /**
  * 媒体类型工具类
  *
- * @author Crown
+ * @author King
  */
 public class MimeTypes {
 

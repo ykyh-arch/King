@@ -8,7 +8,7 @@ import org.king.project.monitor.operlog.domain.OperLog;
 /**
  * 操作日志 服务层
  *
- * @author Crown
+ * @author King
  */
 public interface IOperLogService extends BaseService<OperLog> {
 

@@ -15,7 +15,7 @@ import com.github.pagehelper.PageInfo;
 /**
  * web层通用数据处理
  *
- * @author Crown
+ * @author King
  */
 public class WebController<Entity> extends SuperController<Entity> {
 

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 /**
  * html调用 thymeleaf 实现字典读取
  *
- * @author Crown
+ * @author King
  */
 @Service("dict")
 public class DictService {

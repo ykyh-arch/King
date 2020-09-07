@@ -8,7 +8,7 @@ import org.king.project.system.user.domain.User;
 /**
  * 用户 业务层
  *
- * @author Crown
+ * @author King
  */
 public interface IUserService extends BaseService<User> {
 

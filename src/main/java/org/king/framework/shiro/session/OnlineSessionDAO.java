@@ -16,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 /**
  * 针对自定义的ShiroSession的db操作
  *
- * @author Crown
+ * @author King
  */
 public class OnlineSessionDAO extends EnterpriseCacheSessionDAO {
 

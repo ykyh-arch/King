@@ -9,7 +9,7 @@ import org.king.project.monitor.online.domain.UserOnline;
 /**
  * 在线用户 服务层
  *
- * @author Crown
+ * @author King
  */
 public interface IUserOnlineService extends BaseService<UserOnline> {
 

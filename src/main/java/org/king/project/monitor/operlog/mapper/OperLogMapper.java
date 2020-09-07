@@ -7,7 +7,7 @@ import org.king.project.monitor.operlog.domain.OperLog;
 /**
  * 操作日志 数据层
  *
- * @author Crown
+ * @author King
  */
 @Mapper
 public interface OperLogMapper extends BaseMapper<OperLog> {

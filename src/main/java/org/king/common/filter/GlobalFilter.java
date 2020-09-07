@@ -16,7 +16,7 @@ import org.springframework.web.util.UrlPathHelper;
 /**
  * 防止XSS攻击的过滤器
  *
- * @author Crown
+ * @author King
  */
 public class GlobalFilter implements Filter {
 

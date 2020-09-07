@@ -22,7 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 /**
  * 自定义访问控制
  *
- * @author Crown
+ * @author King
  */
 public class OnlineSessionFilter extends AccessControlFilter {
 

@@ -5,7 +5,7 @@ import org.king.common.utils.Arith;
 /**
  * CPU相关信息
  *
- * @author Crown
+ * @author King
  */
 public class Cpu {
 

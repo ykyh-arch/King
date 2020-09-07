@@ -10,7 +10,7 @@ import org.king.project.system.role.domain.Role;
 /**
  * 部门管理 服务层
  *
- * @author Crown
+ * @author King
  */
 public interface IDeptService extends BaseService<Dept> {
 

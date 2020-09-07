@@ -9,7 +9,7 @@ import org.king.project.system.role.domain.Role;
 /**
  * 角色表 数据层
  *
- * @author Crown
+ * @author King
  */
 @Mapper
 public interface RoleMapper extends BaseMapper<Role> {

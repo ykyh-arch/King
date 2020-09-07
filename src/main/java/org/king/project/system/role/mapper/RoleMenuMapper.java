@@ -7,7 +7,7 @@ import org.king.project.system.role.domain.RoleMenu;
 /**
  * 角色与菜单关联表 数据层
  *
- * @author Crown
+ * @author King
  */
 @Mapper
 public interface RoleMenuMapper extends BaseMapper<RoleMenu> {

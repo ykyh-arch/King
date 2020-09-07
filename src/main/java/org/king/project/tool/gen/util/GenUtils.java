@@ -12,7 +12,7 @@ import org.king.project.tool.gen.domain.GenTableColumn;
 /**
  * 代码生成器 工具类
  *
- * @author Crown
+ * @author King
  */
 public class GenUtils {
 

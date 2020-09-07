@@ -28,7 +28,7 @@ import org.king.project.system.user.domain.User;
 /**
  * 登录帐号控制过滤器
  *
- * @author Crown
+ * @author King
  */
 public class KickoutSessionFilter extends AccessControlFilter {
 

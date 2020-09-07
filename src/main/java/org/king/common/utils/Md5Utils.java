@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Md5加密方法
  *
- * @author Crown
+ * @author King
  */
 public class Md5Utils {
 

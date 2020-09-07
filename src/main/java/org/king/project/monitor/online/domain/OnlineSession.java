@@ -6,7 +6,7 @@ import org.king.common.enums.OnlineStatus;
 /**
  * 在线用户会话属性
  *
- * @author Crown
+ * @author King
  */
 public class OnlineSession extends SimpleSession {
 

@@ -7,7 +7,9 @@ import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiParam;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import org.king.common.annotation.IgnoreSwaggerParameter;
+import org.king.common.utils.StringUtils;
 import org.king.project.peotry.enums.Dynasty;
 
 import javax.validation.constraints.NotBlank;
@@ -21,6 +23,7 @@ import java.util.List;
  */
 @Setter
 @Getter
+@Slf4j
 public class PeotryAuthor {
 
 	private static final long serialVersionUID = 1L;
@@ -97,4 +100,11 @@ public class PeotryAuthor {
 		}
 	}
 
+	public void setIntroduction(String introduction) {
+		if(StringUtils.isNotEmpty(introduction)){
+			this.introduction = StringUtils.removeHTMLTag(introduction);
+		}else{
+			this.introduction = introduction;
+		}
+	}
 }

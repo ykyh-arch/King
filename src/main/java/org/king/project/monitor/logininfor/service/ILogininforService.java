@@ -8,7 +8,7 @@ import org.king.project.monitor.logininfor.domain.Logininfor;
 /**
  * 系统访问日志情况信息 服务层
  *
- * @author Crown
+ * @author King
  */
 public interface ILogininforService extends BaseService<Logininfor> {
 

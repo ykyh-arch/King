@@ -9,7 +9,7 @@ import org.king.project.tool.gen.domain.GenTable;
 /**
  * 业务 数据层
  *
- * @author Crown
+ * @author King
  */
 @Mapper
 public interface GenTableMapper extends BaseMapper<GenTable> {

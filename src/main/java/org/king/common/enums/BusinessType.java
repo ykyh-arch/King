@@ -3,7 +3,7 @@ package org.king.common.enums;
 /**
  * 业务操作类型
  *
- * @author Crown
+ * @author King
  */
 public enum BusinessType {
     /**

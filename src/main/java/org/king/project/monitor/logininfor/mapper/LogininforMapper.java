@@ -7,7 +7,7 @@ import org.king.project.monitor.logininfor.domain.Logininfor;
 /**
  * 系统访问日志情况信息 数据层
  *
- * @author Crown
+ * @author King
  */
 @Mapper
 public interface LogininforMapper extends BaseMapper<Logininfor> {

@@ -6,7 +6,7 @@ import org.king.project.system.role.domain.RoleDept;
 /**
  * 角色业务层
  *
- * @author Crown
+ * @author King
  */
 public interface IRoleDeptService extends BaseService<RoleDept> {
 

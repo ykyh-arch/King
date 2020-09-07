@@ -3,7 +3,7 @@ package org.king.common.cons;
 /**
  * Shiro通用常量
  *
- * @author Crown
+ * @author King
  */
 public interface ShiroConstants {
 

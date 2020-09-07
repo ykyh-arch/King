@@ -8,7 +8,7 @@ import org.king.common.utils.DateUtils;
 /**
  * JVM相关信息
  *
- * @author Crown
+ * @author King
  */
 public class Jvm {
 

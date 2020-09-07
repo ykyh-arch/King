@@ -3,7 +3,7 @@ package org.king.common.cons;
 /**
  * 通用常量信息
  *
- * @author Crown
+ * @author King
  */
 public class Constants {
 

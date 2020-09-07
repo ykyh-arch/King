@@ -7,7 +7,7 @@ import org.king.project.system.dict.domain.DictData;
 /**
  * 字典表 数据层
  *
- * @author Crown
+ * @author King
  */
 @Mapper
 public interface DictDataMapper extends BaseMapper<DictData> {

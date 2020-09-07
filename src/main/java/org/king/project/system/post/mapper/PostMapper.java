@@ -9,7 +9,7 @@ import org.king.project.system.post.domain.Post;
 /**
  * 岗位信息 数据层
  *
- * @author Crown
+ * @author King
  */
 @Mapper
 public interface PostMapper extends BaseMapper<Post> {

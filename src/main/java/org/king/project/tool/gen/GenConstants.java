@@ -3,7 +3,7 @@ package org.king.project.tool.gen;
 /**
  * 代码生成通用常量
  *
- * @author Crown
+ * @author King
  */
 public class GenConstants {
 

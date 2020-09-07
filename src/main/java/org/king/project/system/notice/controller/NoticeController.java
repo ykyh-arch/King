@@ -25,7 +25,7 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 /**
  * 公告 信息操作处理
  *
- * @author Crown
+ * @author King
  */
 @Controller
 @RequestMapping("/system/notice")

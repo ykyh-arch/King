@@ -9,7 +9,7 @@ import org.king.project.tool.gen.domain.GenTable;
 /**
  * 业务 服务层
  *
- * @author Crown
+ * @author King
  */
 public interface IGenTableService extends BaseService<GenTable> {
 

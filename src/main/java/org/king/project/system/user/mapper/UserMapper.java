@@ -9,7 +9,7 @@ import org.king.project.system.user.domain.User;
 /**
  * 用户表 数据层
  *
- * @author Crown
+ * @author King
  */
 @Mapper
 public interface UserMapper extends BaseMapper<User> {

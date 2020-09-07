@@ -6,7 +6,7 @@ import org.king.project.system.user.domain.UserPost;
 /**
  * 角色业务层
  *
- * @author Crown
+ * @author King
  */
 public interface IUserPostService extends BaseService<UserPost> {
 

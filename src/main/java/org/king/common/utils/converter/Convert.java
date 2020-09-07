@@ -12,7 +12,7 @@ import org.king.common.utils.StringUtils;
 /**
  * 类型转换器
  *
- * @author Crown
+ * @author King
  */
 public class Convert {
 

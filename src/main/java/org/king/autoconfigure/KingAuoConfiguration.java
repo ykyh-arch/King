@@ -13,7 +13,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * <p>
- * Crown项目SpringBoot相关配置
+ * King项目SpringBoot相关配置
  * </p>
  *
  * @author Ykyh

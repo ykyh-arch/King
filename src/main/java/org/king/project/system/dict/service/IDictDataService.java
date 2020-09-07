@@ -8,7 +8,7 @@ import org.king.project.system.dict.domain.DictData;
 /**
  * 字典 业务层
  *
- * @author Crown
+ * @author King
  */
 public interface IDictDataService extends BaseService<DictData> {
 

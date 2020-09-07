@@ -8,7 +8,7 @@ import org.king.project.system.notice.domain.Notice;
 /**
  * 公告 服务层
  *
- * @author Crown
+ * @author King
  */
 public interface INoticeService extends BaseService<Notice> {
 

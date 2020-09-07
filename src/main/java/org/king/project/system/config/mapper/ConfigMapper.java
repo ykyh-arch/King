@@ -7,7 +7,7 @@ import org.king.project.system.config.domain.Config;
 /**
  * 参数配置 数据层
  *
- * @author Crown
+ * @author King
  */
 @Mapper
 public interface ConfigMapper extends BaseMapper<Config> {

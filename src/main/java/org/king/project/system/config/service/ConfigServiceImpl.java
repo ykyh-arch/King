@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 /**
  * 参数配置 服务层实现
  *
- * @author Crown
+ * @author King
  */
 @Service
 public class ConfigServiceImpl extends BaseServiceImpl<ConfigMapper, Config> implements IConfigService {

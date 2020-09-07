@@ -10,7 +10,7 @@ import org.king.project.system.user.domain.UserRole;
 /**
  * 角色业务层
  *
- * @author Crown
+ * @author King
  */
 public interface IRoleService extends BaseService<Role> {
 

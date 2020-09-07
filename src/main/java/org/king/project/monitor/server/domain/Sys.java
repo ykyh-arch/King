@@ -3,7 +3,7 @@ package org.king.project.monitor.server.domain;
 /**
  * 系统相关信息
  *
- * @author Crown
+ * @author King
  */
 public class Sys {
 

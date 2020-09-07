@@ -8,7 +8,7 @@ import org.king.project.system.config.domain.Config;
 /**
  * 参数配置 服务层
  *
- * @author Crown
+ * @author King
  */
 public interface IConfigService extends BaseService<Config> {
 

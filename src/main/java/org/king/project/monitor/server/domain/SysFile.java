@@ -3,7 +3,7 @@ package org.king.project.monitor.server.domain;
 /**
  * 系统文件相关信息
  *
- * @author Crown
+ * @author King
  */
 public class SysFile {
 

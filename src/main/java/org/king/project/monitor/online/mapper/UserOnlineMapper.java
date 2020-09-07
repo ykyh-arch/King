@@ -9,7 +9,7 @@ import org.king.project.monitor.online.domain.UserOnline;
 /**
  * 在线用户 数据层
  *
- * @author Crown
+ * @author King
  */
 @Mapper
 public interface UserOnlineMapper extends BaseMapper<UserOnline> {

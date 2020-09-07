@@ -7,7 +7,7 @@ import org.king.project.system.user.domain.UserRole;
 /**
  * 用户表 数据层
  *
- * @author Crown
+ * @author King
  */
 @Mapper
 public interface UserRoleMapper extends BaseMapper<UserRole> {
