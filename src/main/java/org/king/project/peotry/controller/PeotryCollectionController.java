@@ -1,30 +1,19 @@
 package org.king.project.peotry.controller;
 
-import java.util.List;
-
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.king.common.annotation.Log;
-import org.king.common.enums.BusinessType;
-import org.king.common.utils.StringUtils;
-import org.king.common.utils.poi.ExcelUtils;
-import org.king.framework.model.ExcelDTO;
+import org.king.framework.exception.KingException;
 import org.king.framework.web.controller.WebController;
 import org.king.framework.web.page.TableData;
 import org.king.project.peotry.domain.PeotryCollection;
 import org.king.project.peotry.service.IPeotryCollectionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  * 古诗词-诗集信息操作处理
@@ -52,36 +41,27 @@ public class PeotryCollectionController extends WebController<PeotryCollection> 
 	}
 
 	/**
-     * 新增保存古诗词-诗集
-     */
-	@RequiresPermissions("peotry:collection:add")
-	@Log(title = "古诗词-诗集", businessType = BusinessType.INSERT)
-	@PostMapping("/add")
+	 * 查询古诗词-获取详细
+	 */
+	@ApiOperation("获取详细")
+	@ApiImplicitParam(name = "peotryId", value = "古诗ID", required = true, dataType = "long", paramType = "path")
+	@GetMapping("/{peotryId}")
 	@ResponseBody
-	public void addSave(@Validated PeotryCollection collection) {
-		collectionService.save(collection);
+	public PeotryCollection getCollection(@PathVariable Integer peotryId) {
+		if(peotryId==null){
+			throw new KingException(HttpServletResponse.SC_BAD_REQUEST, "古诗主键ID必传");
+		}
+		return collectionService.getCollectionById(peotryId);
 	}
 
 	/**
-     * 修改保存古诗词-诗集
-     */
-	@RequiresPermissions("peotry:collection:edit")
-	@Log(title = "古诗词-诗集", businessType = BusinessType.UPDATE)
-	@PostMapping("/edit")
+	 * 查询古诗词-古诗统计
+	 */
+	@ApiOperation("古诗统计")
+	@GetMapping("/statistic")
 	@ResponseBody
-	public void editSave(@Validated PeotryCollection collection) {
-		collectionService.updateById(collection);
-	}
-	
-	/**
-     * 删除古诗词-诗集
-     */
-	@RequiresPermissions("peotry:collection:remove")
-	@Log(title = "古诗词-诗集", businessType = BusinessType.DELETE)
-	@PostMapping("/remove")
-	@ResponseBody
-	public void remove(String ids) {
-		collectionService.remove(Wrappers.<PeotryCollection>lambdaQuery().in(PeotryCollection::getPeotryId, StringUtils.split2List(ids)));
+	public List<Object> getCollectionStatistic() {
+		return collectionService.getCollectionStatistic();
 	}
 
 }

@@ -104,7 +104,7 @@ public class PeotryUserController extends WebController<PeotryUser> {
 	/**
 	 * 查询古诗词-获取用户详细
 	 */
-	@ApiOperation("获取用户详细")
+	@ApiOperation("获取详细")
 	@ApiImplicitParam(name = "userId", value = "用户ID", required = true, dataType = "long", paramType = "path")
 	@GetMapping("/{userId}")
 	@ResponseBody
@@ -190,7 +190,7 @@ public class PeotryUserController extends WebController<PeotryUser> {
 	@ApiOperation("退出")
 	@GetMapping("/logout")
 	@ResponseBody
-	public void fakeLogou(){
+	public void fakeLogout(){
 		Subject subject = SecurityUtils.getSubject();
 		if (subject != null && subject.isAuthenticated()) {
 			subject.logout();

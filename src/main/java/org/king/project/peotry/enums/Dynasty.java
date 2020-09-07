@@ -1,5 +1,13 @@
 package org.king.project.peotry.enums;
 
+import com.google.common.collect.Lists;
+import org.king.common.utils.JsonUtils;
+import org.king.common.utils.Maps;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * 古诗词-朝代枚举
  *
@@ -33,6 +41,18 @@ public enum Dynasty {
 
         public String getInfo() {
             return info;
+        }
+
+        public static List toList() {
+                List list = Lists.newArrayList();
+                for (Dynasty dynasty : Dynasty.values()) {
+                        Map<String, Object> map = new HashMap<String, Object>();
+                        map.put("dynasty", dynasty.getCode());
+                        map.put("dynastyName", dynasty.getInfo());
+                        //JsonUtils.toJson(map);
+                        list.add(map);
+                }
+                return list;
         }
 
 }

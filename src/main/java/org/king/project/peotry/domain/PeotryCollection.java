@@ -37,12 +37,6 @@ public class PeotryCollection {
 	@ApiModelProperty(value="作者ID")
 	private Integer authorId;
 	/**
-	 * 朝代
-	 */
-	@ApiModelProperty(value="朝代")
-	@NotBlank(message = "朝代不能为空")
-	private String dynasty;
-	/**
 	 * 原文
 	 */
 	@ApiModelProperty(value="原文")
@@ -71,8 +65,8 @@ public class PeotryCollection {
 	/**
 	 * 作者
 	 */
-	private SysPeotryAuthor sysPeotryAuthor;
-
+	private PeotryAuthor sysPeotryAuthor;
+	private Integer dynasty;
 
 
 }

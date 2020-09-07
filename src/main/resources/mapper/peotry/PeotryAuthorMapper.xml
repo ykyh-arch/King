@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.king.project.peotry.mapper.PeotryCollectionMapper">
+<mapper namespace="org.king.project.peotry.mapper.PeotryAuthorMapper">
 
     <resultMap type="org.king.project.peotry.domain.PeotryCollection" id="PeotryCollectionResult">
         <id     property="peotryId"     column="peotry_id"     />
@@ -13,7 +13,6 @@
         <result property="rank"      column="rank"       />
         <result property="pronunciation"      column="pronunciation"       />
         <result property="createTime"     column="create_time"      />
-        <association property="sysPeotryAuthor"    column="author_id" javaType="org.king.project.peotry.domain.PeotryAuthor" resultMap="authorResult" />
     </resultMap>
 
     <resultMap id="authorResult" type="org.king.project.peotry.domain.PeotryAuthor">
@@ -23,37 +22,20 @@
         <result property="peotryIds" column="peotry_ids"   />
         <result property="createTime"   column="create_time"   />
         <result property="dynasty"   column="dynasty"   />
+        <collection  property="collections"   javaType="java.util.List"  resultMap="PeotryCollectionResult" />
     </resultMap>
 
-    <sql id="selectPeotryCollectionVo">
+    <sql id="selectAuthorCollectionVo">
         select sys_peotry_collection.peotry_id, sys_peotry_collection.peotry_name, sys_peotry_collection.author_id, sys_peotry_collection.original_content, sys_peotry_collection.translation_content, sys_peotry_collection.rank, sys_peotry_collection.pronunciation, sys_peotry_collection.create_time,
-        sys_peotry_author.author_name,sys_peotry_author.introduction,sys_peotry_author.dynasty
-        from sys_peotry_collection inner join sys_peotry_author on sys_peotry_collection.author_id = sys_peotry_author.author_id
+        sys_peotry_author.author_id,sys_peotry_author.author_name,sys_peotry_author.introduction,sys_peotry_author.peotry_ids,sys_peotry_author.create_time,sys_peotry_author.dynasty
+        from sys_peotry_author inner join sys_peotry_collection on sys_peotry_author.author_id = sys_peotry_collection.author_id
     </sql>
 
-    <select id="selectPeotryCollectionList" parameterType="java.lang.Long" resultMap="PeotryCollectionResult">
-        <include refid="selectPeotryCollectionVo"/>
+    <select id="getAuthorById" parameterType="java.lang.Long" resultMap="AuthorResult">
+        <include refid="selectAuthorCollectionVo"/>
         where 1=1
-        <if test="dynasty != null and dynasty != ''">
-            AND sys_peotry_author.dynasty = #{dynasty}
-        </if>
-        <if test="authorId != null and authorId != ''">
-            AND sys_peotry_collection.author_id = #{authorId}
-        </if>
-        order by sys_peotry_collection.peotry_id, sys_peotry_collection.create_time
+            AND sys_peotry_author.author_id = #{authorId} AND sys_peotry_author.peotryIds
     </select>
 
-    <select id="getCollectionById" parameterType="java.lang.Integer" resultMap="PeotryCollectionResult">
-        <include refid="selectPeotryCollectionVo"/>
-        where 1=1
-            AND sys_peotry_collection.peotry_id = #{peotryId}
-    </select>
-
-    <select id="getCollectionCountByDynasty" parameterType="java.lang.Integer" resultType="java.lang.Integer">
-        select count(t1.peotry_id)
-        from sys_peotry_collection t1 inner join sys_peotry_author t2 on t1.author_id = t2.author_id
-        where 1=1
-        AND t2.dynasty = #{dynasty}
-    </select>
 
 </mapper>

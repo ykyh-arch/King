@@ -21,4 +21,20 @@ public interface PeotryCollectionMapper extends BaseMapper<PeotryCollection> {
      * @return 古诗信息集合
      */
     List<PeotryCollection> selectPeotryCollectionList(PeotryCollection collection);
+
+    /**
+     * 查询古诗信息
+     *
+     * @param peotryId 古诗主键ID
+     * @return 古诗信息
+     */
+    PeotryCollection getCollectionById(Integer peotryId);
+
+    /**
+     * 查询古诗个数
+     *
+     * @param dynasty 朝代
+     * @return 古诗个数
+     */
+    Integer getCollectionCountByDynasty(Integer dynasty);
 }
