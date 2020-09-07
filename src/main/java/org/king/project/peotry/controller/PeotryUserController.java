@@ -108,7 +108,7 @@ public class PeotryUserController extends WebController<PeotryUser> {
 	@ApiImplicitParam(name = "userId", value = "用户ID", required = true, dataType = "long", paramType = "path")
 	@GetMapping("/{userId}")
 	@ResponseBody
-	public PeotryUser getUser(@PathVariable Integer userId) {
+	public PeotryUser getUser(@PathVariable Long userId) {
 		String obj = (String)SecurityUtils.getSubject().getPrincipal();
 		if(Objects.isNull(obj)){
 			throw new KingException(HttpServletResponse.SC_UNAUTHORIZED, "用户名未登录");

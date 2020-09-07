@@ -27,7 +27,7 @@ public interface IPeotryCollectionService extends BaseService<PeotryCollection> 
      * @param peotryId 古诗主键ID
      * @return 古诗信息
      */
-    PeotryCollection getCollectionById(Integer peotryId);
+    PeotryCollection getCollectionById(Long peotryId);
 
     /**
      * 古诗统计

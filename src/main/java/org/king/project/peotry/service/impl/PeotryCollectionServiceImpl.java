@@ -26,7 +26,7 @@ public class PeotryCollectionServiceImpl extends BaseServiceImpl<PeotryCollectio
     }
 
     @Override
-    public PeotryCollection getCollectionById(Integer peotryId) {
+    public PeotryCollection getCollectionById(Long peotryId) {
         return baseMapper.getCollectionById(peotryId);
     }
 

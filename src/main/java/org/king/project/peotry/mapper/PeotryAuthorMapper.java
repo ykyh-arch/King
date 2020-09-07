@@ -18,5 +18,5 @@ public interface PeotryAuthorMapper extends BaseMapper<PeotryAuthor> {
      *
      * @return 诗人信息
      */
-    PeotryCollection getAuthorById(Integer authorId);
+    PeotryAuthor getAuthorById(Long authorId);
 }

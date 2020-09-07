@@ -47,7 +47,7 @@ public class PeotryCollectionController extends WebController<PeotryCollection> 
 	@ApiImplicitParam(name = "peotryId", value = "古诗ID", required = true, dataType = "long", paramType = "path")
 	@GetMapping("/{peotryId}")
 	@ResponseBody
-	public PeotryCollection getCollection(@PathVariable Integer peotryId) {
+	public PeotryCollection getCollection(@PathVariable Long peotryId) {
 		if(peotryId==null){
 			throw new KingException(HttpServletResponse.SC_BAD_REQUEST, "古诗主键ID必传");
 		}

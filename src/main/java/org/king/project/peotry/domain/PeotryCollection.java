@@ -1,9 +1,11 @@
 package org.king.project.peotry.domain;
 
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
+import org.king.common.annotation.IgnoreSwaggerParameter;
 
 import javax.validation.constraints.NotBlank;
 import java.util.Date;
@@ -35,7 +37,7 @@ public class PeotryCollection {
 	 * 作者ID
 	 */
 	@ApiModelProperty(value="作者ID")
-	private Integer authorId;
+	private Long authorId;
 	/**
 	 * 原文
 	 */
@@ -65,6 +67,7 @@ public class PeotryCollection {
 	/**
 	 * 作者
 	 */
+	@IgnoreSwaggerParameter
 	private PeotryAuthor sysPeotryAuthor;
 	private Integer dynasty;
 

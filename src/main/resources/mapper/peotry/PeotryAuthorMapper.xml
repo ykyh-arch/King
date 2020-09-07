@@ -31,10 +31,10 @@
         from sys_peotry_author inner join sys_peotry_collection on sys_peotry_author.author_id = sys_peotry_collection.author_id
     </sql>
 
-    <select id="getAuthorById" parameterType="java.lang.Long" resultMap="AuthorResult">
+    <select id="getAuthorById" parameterType="java.lang.Long" resultMap="authorResult">
         <include refid="selectAuthorCollectionVo"/>
         where 1=1
-            AND sys_peotry_author.author_id = #{authorId} AND sys_peotry_author.peotryIds
+            AND sys_peotry_author.author_id = #{authorId}
     </select>
 
 

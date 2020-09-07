@@ -43,7 +43,7 @@
         order by sys_peotry_collection.peotry_id, sys_peotry_collection.create_time
     </select>
 
-    <select id="getCollectionById" parameterType="java.lang.Integer" resultMap="PeotryCollectionResult">
+    <select id="getCollectionById" parameterType="java.lang.Long" resultMap="PeotryCollectionResult">
         <include refid="selectPeotryCollectionVo"/>
         where 1=1
             AND sys_peotry_collection.peotry_id = #{peotryId}

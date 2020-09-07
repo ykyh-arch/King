@@ -2,9 +2,12 @@ package org.king.project.peotry.domain;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiParam;
 import lombok.Getter;
 import lombok.Setter;
+import org.king.common.annotation.IgnoreSwaggerParameter;
 import org.king.project.peotry.enums.Dynasty;
 
 import javax.validation.constraints.NotBlank;
@@ -59,6 +62,9 @@ public class PeotryAuthor {
 	@TableField(exist = false)
 	private String dynastyName;
 	@TableField(exist = false)
+//	@ApiParam(hidden=true)
+//	@JsonIgnore
+	@IgnoreSwaggerParameter
 	private List<PeotryCollection> collections;
 
 	public void setDynasty(Integer dynasty) {

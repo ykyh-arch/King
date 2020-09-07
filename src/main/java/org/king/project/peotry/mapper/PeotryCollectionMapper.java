@@ -28,7 +28,7 @@ public interface PeotryCollectionMapper extends BaseMapper<PeotryCollection> {
      * @param peotryId 古诗主键ID
      * @return 古诗信息
      */
-    PeotryCollection getCollectionById(Integer peotryId);
+    PeotryCollection getCollectionById(Long peotryId);
 
     /**
      * 查询古诗个数

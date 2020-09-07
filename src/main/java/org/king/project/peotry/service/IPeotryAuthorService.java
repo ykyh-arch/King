@@ -16,5 +16,5 @@ public interface IPeotryAuthorService extends BaseService<PeotryAuthor> {
      *
      * @return 诗人信息
      */
-    PeotryCollection getAuthorById(Integer authorId);
+    PeotryAuthor getAuthorById(Long authorId);
 }

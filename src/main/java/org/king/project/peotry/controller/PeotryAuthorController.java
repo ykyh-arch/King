@@ -48,7 +48,7 @@ public class PeotryAuthorController extends WebController<PeotryAuthor> {
 	@ApiImplicitParam(name = "authorId", value = "诗人ID", required = true, dataType = "long", paramType = "path")
 	@GetMapping("/{authorId}")
 	@ResponseBody
-	public PeotryCollection getAuthor(@PathVariable Integer authorId) {
+	public PeotryAuthor getAuthor(@PathVariable Long authorId) {
 		if(authorId==null){
 			throw new KingException(HttpServletResponse.SC_BAD_REQUEST, "诗人主键ID必传");
 		}
