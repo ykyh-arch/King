@@ -40,6 +40,7 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
     private static final String regEx_space = "\\s*|\t|\r|\n";// 定义空格回车换行符
     private static final String regEx_w = "<w[^>]*?>[\\s\\S]*?<\\/w[^>]*?>";//定义所有w标签
 
+
     /**
      * @param htmlStr
      * @return 删除Html标签
@@ -61,6 +62,8 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
         Matcher m_space = p_space.matcher(htmlStr);
         htmlStr = m_space.replaceAll(""); // 过滤空格回车标签
         htmlStr = htmlStr.replaceAll(" ", ""); //过滤
+        htmlStr = htmlStr.replaceAll("&nbsp;","");//
+        htmlStr = htmlStr.replaceAll("&amp;","");//
         return htmlStr.trim(); // 返回文本字符串
     }
 
