@@ -1,7 +1,6 @@
 package org.king.project.peotry.domain;
 
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
@@ -74,7 +73,7 @@ public class PeotryCollection {
 
 	public void setOriginalContent(String originalContent) {
 		if(StringUtils.isNotEmpty(originalContent)){
-			this.originalContent = StringUtils.removeHTMLTag(originalContent);
+			this.originalContent =StringUtils.removeHTMLTag(originalContent);
 		}else{
 			this.originalContent = originalContent;
 		}
