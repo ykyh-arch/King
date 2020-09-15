@@ -1,8 +1,6 @@
 package org.king.project.peotry.enums;
 
 import com.google.common.collect.Lists;
-import org.king.common.utils.JsonUtils;
-import org.king.common.utils.Maps;
 
 import java.util.HashMap;
 import java.util.List;
