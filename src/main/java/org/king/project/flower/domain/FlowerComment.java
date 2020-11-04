@@ -1,7 +1,6 @@
 package org.king.project.flower.domain;
 
 import io.swagger.annotations.ApiModelProperty;
-import org.king.framework.web.domain.BaseEntity;
 
 import lombok.Getter;
 import lombok.Setter;
