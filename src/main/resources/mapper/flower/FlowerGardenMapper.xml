@@ -4,4 +4,57 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.king.project.flower.mapper.FlowerGardenMapper">
 
+    <sql id="selectFlowerGardenListVo">
+        SELECT
+            sys_flower_garden.garden_id,
+            sys_flower_garden.content,
+            sys_flower_garden.content_imgList,
+            sys_flower_garden.create_time,
+            sys_flower_garden.title,
+            sys_flower_user.user_id,
+            sys_flower_user.user_name,
+            sys_flower_user.avatar,
+        /*评论数*/
+        ( SELECT COUNT(1) FROM sys_flower_comment WHERE sys_flower_comment.garden_id = sys_flower_garden.garden_id ) comment_count,
+        /*点赞数*/
+       ( SELECT COUNT(1) FROM sys_flower_thumbsup WHERE sys_flower_thumbsup.garden_id = sys_flower_garden.garden_id ) thumbsup_count
+        FROM
+            sys_flower_garden
+        INNER JOIN sys_flower_user ON sys_flower_garden.user_id = sys_flower_user.user_id
+    </sql>
+
+    <resultMap type="org.king.project.flower.domain.FlowerGarden" id="flowerGardenResult">
+        <id     property="gardenId"     column="garden_id"     />
+        <result property="userId"   column="user_id"   />
+        <result property="title"  column="title"   />
+        <result property="createTime"     column="create_time"      />
+        <result property="content"  column="content"   />
+        <result property="contentImglist"     column="content_imgList"      />
+        <!--自定义-->
+        <result property="commentCount"     column="comment_count"      />
+        <result property="thumbsupCount"     column="thumbsup_count"      />
+        <association property="flowerUser"    column="user_id" javaType="org.king.project.flower.domain.FlowerUser" resultMap="flowerUserResult" />
+    </resultMap>
+
+    <resultMap type="org.king.project.flower.domain.FlowerUser" id="flowerUserResult">
+        <id     property="userId"       column="user_id"      />
+        <result property="loginName"    column="login_name"   />
+        <result property="userName"     column="user_name"    />
+        <result property="sex"          column="sex"          />
+        <result property="avatar"       column="avatar"       />
+        <result property="password"     column="password"     />
+        <result property="salt"         column="salt"         />
+        <result property="createTime"   column="create_time"  />
+        <result property="signature"    column="signature"    />
+    </resultMap>
+
+    <select id="selectFlowerGardenList" parameterType="java.lang.Long" resultMap="flowerGardenResult">
+        <include refid="selectFlowerGardenListVo"/>
+        where 1=1
+        <if test="userId != null and userId != ''">
+            AND sys_flower_garden.user_id = #{userId}
+        </if>
+        ORDER BY sys_flower_garden.create_time DESC
+    </select>
+
 </mapper>

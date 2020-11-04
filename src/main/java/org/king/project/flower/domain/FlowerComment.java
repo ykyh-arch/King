@@ -1,9 +1,12 @@
 package org.king.project.flower.domain;
 
+import io.swagger.annotations.ApiModelProperty;
 import org.king.framework.web.domain.BaseEntity;
 
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.Date;
 
 /**
  * 花科-评论表 sys_flower_comment
@@ -32,5 +35,10 @@ public class FlowerComment {
 	 * 内容
 	 */
 	private String content;
+	/**
+	 * 发布时间
+	 */
+	@ApiModelProperty(value="发布时间")
+	private Date createTime;
 
 }

@@ -4,6 +4,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.king.framework.mapper.BaseMapper;
 import org.king.project.flower.domain.FlowerGarden;
 
+import java.util.List;
+
 /**
  * 花科-花园 数据层
  *
@@ -12,4 +14,7 @@ import org.king.project.flower.domain.FlowerGarden;
 @Mapper
 public interface FlowerGardenMapper extends BaseMapper<FlowerGarden> {
 
+    List<FlowerGarden> selectFlowerGardenList(FlowerGarden garden);
+
+    FlowerGarden getGardenById(String gardenId);
 }

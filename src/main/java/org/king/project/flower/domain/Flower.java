@@ -1,9 +1,12 @@
 package org.king.project.flower.domain;
 
+import io.swagger.annotations.ApiModelProperty;
 import org.king.framework.web.domain.BaseEntity;
 
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.Date;
 
 /**
  * 花科-信息表 sys_flower
@@ -69,5 +72,11 @@ public class Flower {
 	 * 描述
 	 */
 	private String description;
+
+	/**
+	 * 录入时间
+	 */
+	@ApiModelProperty(value="录入时间")
+	private Date createTime;
 
 }

@@ -1,28 +1,21 @@
 package org.king.project.flower.controller;
 
-import java.util.List;
-
-import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.king.common.annotation.Log;
-import org.king.common.enums.BusinessType;
-import org.king.common.utils.StringUtils;
-import org.king.common.utils.poi.ExcelUtils;
-import org.king.framework.model.ExcelDTO;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.SecurityUtils;
+import org.king.framework.exception.KingException;
 import org.king.framework.web.controller.WebController;
 import org.king.framework.web.page.TableData;
 import org.king.project.flower.domain.FlowerGarden;
 import org.king.project.flower.service.IFlowerGardenService;
+import org.king.project.peotry.domain.PeotryUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * 花科-花园信息操作处理
@@ -30,93 +23,38 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
  * @author Ykyh
  */
 @Controller
-@RequestMapping("/monitor/garden")
+@RequestMapping("/flower/garden")
 public class FlowerGardenController extends WebController<FlowerGarden> {
 
-	private final String prefix = "monitor/garden";
 
 	@Autowired
 	private IFlowerGardenService gardenService;
 
-	@RequiresPermissions("monitor:garden:view")
-	@GetMapping
-	public String garden() {
-		return prefix + "/garden";
-	}
-
 	/**
      * 查询花科-花园列表
      */
-	@RequiresPermissions("monitor:garden:list")
+	@ApiOperation("花园列表")
 	@PostMapping("/list")
 	@ResponseBody
 	public TableData<FlowerGarden> list(FlowerGarden garden) {
 		startPage();
-		List<FlowerGarden> list = gardenService.list(Wrappers.<FlowerGarden>lambdaQuery(garden));
+		List<FlowerGarden> list = gardenService.selectFlowerGardenList(garden);
+		//评论数、是否点赞、用户信息：头像、昵称
 		return getTableData(list);
 	}
 
 	/**
-     * 导出花科-花园列表
-     */
-	@RequiresPermissions("monitor:garden:export")
-	@PostMapping("/export")
+	 * 查询花科-花园详情
+	 */
+	@ApiOperation("获取详细")
+	@ApiImplicitParam(name = "gardenId", value = "主键ID", required = true, dataType = "long", paramType = "path")
+	@GetMapping("/{gardenId}")
 	@ResponseBody
-	public ExcelDTO export(FlowerGarden garden) {
-		List<FlowerGarden> list = gardenService.list(Wrappers.<FlowerGarden>lambdaQuery(garden));
-		ExcelUtils<FlowerGarden> util = new ExcelUtils<>(FlowerGarden.class);
-		return new ExcelDTO(util.exportExcel(list, "garden"));
-	}
-
-	/**
-     * 新增花科-花园
-     */
-	@GetMapping("/add")
-	public String add() {
-		return prefix + "/add";
-	}
-
-	/**
-     * 新增保存花科-花园
-     */
-	@RequiresPermissions("monitor:garden:add")
-	@Log(title = "花科-花园", businessType = BusinessType.INSERT)
-	@PostMapping("/add")
-	@ResponseBody
-	public void addSave(@Validated FlowerGarden garden) {
-		gardenService.save(garden);
-	}
-
-	/**
-     * 修改花科-花园
-     */
-	@GetMapping("/edit/{gardenId}")
-	public String edit(@PathVariable("gardenId") Long gardenId, ModelMap mmap) {
-		FlowerGarden garden = gardenService.getById(gardenId);
-		mmap.put("garden", garden);
-		return prefix + "/edit";
-	}
-
-	/**
-     * 修改保存花科-花园
-     */
-	@RequiresPermissions("monitor:garden:edit")
-	@Log(title = "花科-花园", businessType = BusinessType.UPDATE)
-	@PostMapping("/edit")
-	@ResponseBody
-	public void editSave(@Validated FlowerGarden garden) {
-		gardenService.updateById(garden);
-	}
-	
-	/**
-     * 删除花科-花园
-     */
-	@RequiresPermissions("monitor:garden:remove")
-	@Log(title = "花科-花园", businessType = BusinessType.DELETE)
-	@PostMapping("/remove")
-	@ResponseBody
-	public void remove(String ids) {
-		gardenService.remove(Wrappers.<FlowerGarden>lambdaQuery().in(FlowerGarden::getGardenId, StringUtils.split2List(ids)));
+	public FlowerGarden getGarden(@PathVariable Long gardenId) {
+		if(gardenId==null){
+			throw new KingException(HttpServletResponse.SC_BAD_REQUEST, "主键ID必传");
+		}
+		return gardenService.getGardenById(gardenId+"");
 	}
 
 }
