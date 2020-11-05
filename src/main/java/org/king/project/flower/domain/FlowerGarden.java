@@ -3,15 +3,19 @@ package org.king.project.flower.domain;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.google.common.collect.Lists;
 import io.swagger.annotations.ApiModelProperty;
 import org.king.common.annotation.IgnoreSwaggerParameter;
 import org.king.framework.web.domain.BaseEntity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.king.project.peotry.enums.Dynasty;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 花科-花园表 sys_flower_garden
@@ -58,6 +62,10 @@ public class FlowerGarden {
 	 * 点赞数
 	 */
 	private Long thumbsupCount;
+	/**
+	 * 是否点赞，0：未赞；1：已赞；2：未知
+	 */
+	private Long isThumbsup;
 
 	/**
 	 * 用户
@@ -74,5 +82,5 @@ public class FlowerGarden {
 	@ApiModelProperty(value="发布时间")
 	private Date createTime;
 
-
 }
+

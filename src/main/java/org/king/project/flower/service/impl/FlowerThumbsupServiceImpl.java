@@ -14,4 +14,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class FlowerThumbsupServiceImpl extends BaseServiceImpl<FlowerThumbsupMapper, FlowerThumbsup> implements IFlowerThumbsupService {
 
+    @Override
+    public boolean saveOrDel(FlowerThumbsup thumbsup) {
+        FlowerThumbsup temp = this.query().eq(FlowerThumbsup::getUserId, thumbsup.getUserId()).eq(FlowerThumbsup::getGardenId, thumbsup.getGardenId()).getOne();
+        if(temp==null){
+            this.save(thumbsup);
+        }else{
+            this.removeById(temp.getThumbsupId());
+        }
+        return true;
+    }
 }

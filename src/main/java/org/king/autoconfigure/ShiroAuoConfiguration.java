@@ -197,6 +197,8 @@ public class ShiroAuoConfiguration implements WebMvcConfigurer {
         filterChainDefinitionMap.put("/king/**", "anon");
         //添加古诗词接口匿名访问
         filterChainDefinitionMap.put("/peotry/**", "anon");
+        //添加花科接口匿名访问
+        filterChainDefinitionMap.put("/flower/**", "anon");
         filterChainDefinitionMap.put("/swagger-ui.html/**", "anon");
         filterChainDefinitionMap.put("/webjars/**", "anon");
         filterChainDefinitionMap.put("/swagger-resources/**","anon");

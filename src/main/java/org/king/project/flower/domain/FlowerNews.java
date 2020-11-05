@@ -1,8 +1,7 @@
 package org.king.project.flower.domain;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import io.swagger.annotations.ApiModelProperty;
-import org.king.framework.web.domain.BaseEntity;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,6 +21,8 @@ public class FlowerNews {
 	/**
 	 * 资讯ID
 	 */
+	@ApiModelProperty(value = "主键ID")
+	@TableId
 	private Long newsId;
 	/**
 	 * 标题

@@ -10,4 +10,5 @@ import org.king.project.flower.domain.FlowerThumbsup;
  */
 public interface IFlowerThumbsupService extends BaseService<FlowerThumbsup> {
 
+    boolean saveOrDel(FlowerThumbsup thumbsup);
 }
