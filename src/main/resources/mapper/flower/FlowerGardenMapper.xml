@@ -23,6 +23,29 @@
         INNER JOIN sys_flower_user ON sys_flower_garden.user_id = sys_flower_user.user_id
     </sql>
 
+    <sql id="selectFlowerGardenVo">
+        SELECT
+            sys_flower_garden.garden_id,
+            sys_flower_garden.content,
+            sys_flower_garden.content_imgList,
+            sys_flower_garden.create_time,
+            sys_flower_garden.title,
+            sys_flower_user.user_id,
+            sys_flower_user.user_name,
+            sys_flower_user.avatar,
+        /*评论数*/
+        ( SELECT COUNT(1) FROM sys_flower_comment WHERE sys_flower_comment.garden_id = sys_flower_garden.garden_id ) comment_count,
+        /*点赞数*/
+       ( SELECT COUNT(1) FROM sys_flower_thumbsup WHERE sys_flower_thumbsup.garden_id = sys_flower_garden.garden_id ) thumbsup_count
+        sys_flower_comment.comment_id,
+		sys_flower_comment.content,
+		sys_flower_comment.create_time
+        FROM
+            sys_flower_garden
+        INNER JOIN sys_flower_user ON sys_flower_garden.user_id = sys_flower_user.user_id
+        INNER JOIN sys_flower_comment on sys_flower_comment.garden_id = sys_flower_garden.garden_id
+    </sql>
+
     <resultMap type="org.king.project.flower.domain.FlowerGarden" id="flowerGardenResult">
         <id     property="gardenId"     column="garden_id"     />
         <result property="userId"   column="user_id"   />
@@ -34,6 +57,7 @@
         <result property="commentCount"     column="comment_count"      />
         <result property="thumbsupCount"     column="thumbsup_count"      />
         <association property="flowerUser"    column="user_id" javaType="org.king.project.flower.domain.FlowerUser" resultMap="flowerUserResult" />
+        <collection  property="flowerComments"  javaType="java.util.List"     resultMap="flowerCommentResult" />
     </resultMap>
 
     <resultMap type="org.king.project.flower.domain.FlowerUser" id="flowerUserResult">
@@ -48,6 +72,14 @@
         <result property="signature"    column="signature"    />
     </resultMap>
 
+    <resultMap type="org.king.project.flower.domain.FlowerComment" id="flowerCommentResult">
+        <id     property="commentId"       column="comment_id"      />
+        <result property="gardenId"    column="garden_id"   />
+        <result property="userId"     column="user_id"    />
+        <result property="content"          column="content"          />
+        <result property="createTime"       column="create_time"       />
+    </resultMap>
+
     <select id="selectFlowerGardenList" parameterType="java.lang.Long" resultMap="flowerGardenResult">
         <include refid="selectFlowerGardenListVo"/>
         where 1=1
@@ -55,6 +87,11 @@
             AND sys_flower_garden.user_id = #{userId}
         </if>
         ORDER BY sys_flower_garden.create_time DESC
+    </select>
+
+    <select id="getGardenById" parameterType="java.lang.String" resultMap="flowerGardenResult">
+        <include refid="selectFlowerGardenVo"/>
+        where 1=1 AND sys_flower_garden.garden_id = #{gardenId}
     </select>
 
 </mapper>

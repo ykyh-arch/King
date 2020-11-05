@@ -11,6 +11,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 花科-花园表 sys_flower_garden
@@ -63,6 +64,9 @@ public class FlowerGarden {
 	 */
 	@IgnoreSwaggerParameter
 	private FlowerUser flowerUser;
+
+	@IgnoreSwaggerParameter
+	private List<FlowerComment> flowerComments;
 
 	/**
 	 * 发布时间
