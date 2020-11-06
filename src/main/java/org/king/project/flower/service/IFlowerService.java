@@ -12,4 +12,5 @@ import java.util.List;
  */
 public interface IFlowerService extends BaseService<Flower> {
 
+    List<Flower> getByType(Long type);
 }
