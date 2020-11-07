@@ -7,6 +7,7 @@ import org.king.framework.exception.KingException;
 import org.king.framework.web.controller.WebController;
 import org.king.framework.web.page.TableData;
 import org.king.project.flower.domain.Flower;
+import org.king.project.flower.domain.FlowerCollection;
 import org.king.project.flower.service.IFlowerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -94,5 +96,15 @@ public class FlowerController extends WebController<Flower> {
 		return flowerService.getByType(type);
 	}
 
+	/**
+	 * 我的收藏
+	 */
+	@GetMapping("/my")
+	@ApiOperation("我的收藏")
+	@ResponseBody
+	public Map<String,List<Flower>> my() {
+		Map<String,List<Flower>> list = flowerService.getMyCollection();
+		return list;
+	}
 
 }

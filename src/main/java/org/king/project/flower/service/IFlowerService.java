@@ -4,6 +4,7 @@ import org.king.framework.service.BaseService;
 import org.king.project.flower.domain.Flower;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 花科-信息 服务层
@@ -13,4 +14,6 @@ import java.util.List;
 public interface IFlowerService extends BaseService<Flower> {
 
     List<Flower> getByType(Long type);
+
+    Map<String,List<Flower>> getMyCollection();
 }

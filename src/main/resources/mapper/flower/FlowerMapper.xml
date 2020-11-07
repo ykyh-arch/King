@@ -4,4 +4,30 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.king.project.flower.mapper.FlowerMapper">
 
+    <sql id="selectCollectionVo">
+        SELECT
+            t2.flower_id,
+            t2.flower_img,
+            t2.flower_name,
+            t2.type
+        FROM
+            sys_flower_collection t1
+            INNER JOIN sys_flower t2 ON t1.flower_id = t2.flower_id
+    </sql>
+
+    <resultMap type="org.king.project.flower.domain.Flower" id="flowerResult">
+        <id     property="flowerId"     column="flower_id"     />
+        <result property="flowerName"   column="flower_name"   />
+        <result property="flowerImg"  column="flower_img"   />
+        <result property="type"     column="type"      />
+    </resultMap>
+
+    <select id="getMyCollection" parameterType="java.lang.Long" resultMap="flowerResult">
+        <include refid="selectCollectionVo"/>
+        WHERE 1=1
+        <if test="userId != null and userId != ''">
+            AND t1.user_id = #{userId}
+        </if>
+    </select>
+
 </mapper>
