@@ -9,11 +9,15 @@ import org.king.framework.exception.KingException;
 import org.king.framework.web.controller.WebController;
 import org.king.framework.web.page.TableData;
 import org.king.project.flower.domain.FlowerCollection;
+import org.king.project.flower.domain.FlowerUser;
 import org.king.project.flower.service.IFlowerCollectionService;
+import org.king.project.flower.service.IFlowerUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
@@ -30,6 +34,9 @@ public class FlowerCollectionController extends WebController<FlowerCollection> 
 
 	@Autowired
 	private IFlowerCollectionService collectionService;
+
+	@Autowired
+	private IFlowerUserService flowerUserService;
 
 	/**
      * 查询花科-收藏列表
@@ -58,9 +65,8 @@ public class FlowerCollectionController extends WebController<FlowerCollection> 
 		if(collection.getFlowerId()==null){
 			throw new KingException(HttpServletResponse.SC_BAD_REQUEST, "flowerId参数必传");
 		}
-		if(collection.getUserId()==null){
-			throw new KingException(HttpServletResponse.SC_BAD_REQUEST, "userId参数必传");
-		}
+		long loginUserId=flowerUserService.query().eq(FlowerUser::getLoginName, obj).getOne().getUserId();
+		collection.setUserId(loginUserId);
 		collectionService.saveOrDel(collection);
 	}
 
