@@ -1,23 +1,28 @@
 package org.king.project.flower.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import org.apache.commons.beanutils.BeanUtils;
+import org.apache.shiro.SecurityUtils;
 import org.king.framework.exception.KingException;
 import org.king.framework.web.controller.WebController;
 import org.king.framework.web.page.TableData;
 import org.king.project.flower.domain.Flower;
 import org.king.project.flower.domain.FlowerCollection;
+import org.king.project.flower.domain.FlowerUser;
+import org.king.project.flower.enums.Collection;
+import org.king.project.flower.service.IFlowerCollectionService;
 import org.king.project.flower.service.IFlowerService;
+import org.king.project.flower.service.IFlowerUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -33,6 +38,12 @@ public class FlowerController extends WebController<Flower> {
 
 	@Autowired
 	private IFlowerService flowerService;
+
+	@Autowired
+	private IFlowerUserService flowerUserService;
+
+	@Autowired
+	private IFlowerCollectionService flowerCollectionService;
 
 	/**
      * 查询花科-信息列表
@@ -75,11 +86,36 @@ public class FlowerController extends WebController<Flower> {
 	@ApiImplicitParam(name = "flowerId", value = "主键ID", required = true, dataType = "long", paramType = "path")
 	@GetMapping("/{flowerId}")
 	@ResponseBody
-	public Flower getFlower(@PathVariable Long flowerId) {
+	public Map<String, Object> getFlower(@PathVariable Long flowerId) throws Exception {
 		if(flowerId==null){
 			throw new KingException(HttpServletResponse.SC_BAD_REQUEST, "主键ID必传");
 		}
-		return flowerService.getById(flowerId);
+		Flower flower = flowerService.getById(flowerId);
+		Long loginUserId = getCurrentLoginUser();
+		Long isCollection=null;
+		if(loginUserId ==null){
+			isCollection = Collection.UNKNOWN.getCode().longValue();
+		}else{
+			FlowerCollection temp = flowerCollectionService.query().eq(FlowerCollection::getUserId, loginUserId).eq(FlowerCollection::getFlowerId, flower.getFlowerId()).getOne();
+			if(temp==null) {
+				isCollection = Collection.NOCOLLECTION.getCode().longValue();
+			}else{
+				isCollection = Collection.COLLECTIONED.getCode().longValue();
+			}
+		}
+		Map<String,Object> map = JSONObject.parseObject(JSON.toJSONString(flower));
+		map.put("isCollection",isCollection);
+		return map;
+	}
+
+	private Long getCurrentLoginUser(){
+		//检查是否登录
+		String obj = (String) SecurityUtils.getSubject().getPrincipal();
+		Long loginUserId=null;
+		if(!Objects.isNull(obj)){
+			loginUserId=flowerUserService.query().eq(FlowerUser::getLoginName, obj).getOne().getUserId();
+		}
+		return loginUserId;
 	}
 
 	/**

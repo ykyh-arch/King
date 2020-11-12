@@ -4,7 +4,6 @@ import org.apache.shiro.SecurityUtils;
 import org.king.framework.exception.KingException;
 import org.king.framework.service.impl.BaseServiceImpl;
 import org.king.project.flower.domain.Flower;
-import org.king.project.flower.domain.FlowerCollection;
 import org.king.project.flower.mapper.FlowerMapper;
 import org.king.project.flower.service.IFlowerService;
 import org.king.project.flower.service.IFlowerUserService;
