@@ -56,7 +56,9 @@ public class FlowerScreenController extends WebController<FlowerScreen> {
 		if(flowerScreen.getType()==null){
 			throw new KingException(HttpServletResponse.SC_BAD_REQUEST, "参数type必传");
 		}
-		FlowerScreen temp = screenService.query().eq(FlowerScreen::getUserId, flowerScreen.getUserId()).eq(FlowerScreen::getRelationId, flowerScreen.getRelationId()).getOne();
+		FlowerScreen temp = screenService.query().eq(FlowerScreen::getUserId, flowerScreen.getUserId())
+				.eq(FlowerScreen::getRelationId, flowerScreen.getRelationId())
+				.eq(FlowerScreen::getType,flowerScreen.getType()).getOne();
 		if(temp==null){
 			screenService.save(flowerScreen);
 		}
