@@ -31,7 +31,8 @@ public class FlowerGardenController extends WebController<FlowerGarden> {
      * 查询花科-花园列表
      */
 	@ApiOperation("花园列表")
-	@PostMapping("/list")
+	//@PostMapping("/list")
+	@RequestMapping("/list")
 	@ResponseBody
 	public TableData<FlowerGarden> list(FlowerGarden garden) {
 		startPage();

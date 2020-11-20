@@ -49,7 +49,7 @@ public class WebController<Entity> extends SuperController<Entity> {
         Integer pageSize = pageDomain.getPageSize();
         boolean searchCount = pageDomain.isSearchCount();
         if (StringUtils.isNotNull(pageNum) && StringUtils.isNotNull(pageSize)) {
-            PageHelper.startPage(pageNum, pageSize, searchCount).setOrderBy(pageDomain.getOrderBy());
+            PageHelper.startPage(pageNum, pageSize, searchCount,false,true).setOrderBy(pageDomain.getOrderBy());
         }
     }
 
