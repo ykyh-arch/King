@@ -44,9 +44,9 @@
         t4.avatar comment_avatar
         FROM
             sys_flower_garden t1
-        INNER JOIN sys_flower_user t2 ON t1.user_id = t2.user_id
-        INNER JOIN sys_flower_comment t3 on t3.garden_id = t1.garden_id
-        INNER JOIN sys_flower_user t4 on t3.user_id = t4.user_id
+        LEFT JOIN sys_flower_user t2 ON t1.user_id = t2.user_id
+        LEFT JOIN sys_flower_comment t3 on t3.garden_id = t1.garden_id
+        LEFT JOIN sys_flower_user t4 on t3.user_id = t4.user_id
     </sql>
 
     <resultMap type="org.king.project.flower.domain.FlowerGarden" id="flowerGardenListResult">
